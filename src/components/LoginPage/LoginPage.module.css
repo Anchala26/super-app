@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Single+Day&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  background-color: #0c190d;
+}
+.page-body {
+  display: flex;
+  flex-direction: row;
+}
+.img-text {
+  position: absolute;
+  bottom: 60px;
+  left: 30px;
+  font-size: 40px;
+  font-weight: 800;
+  color: white;
+}
+
+img {
+  height: 99vh;
+  width: 100vh;
+  object-fit: cover;
+}
+.form-build {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+h4 {
+  font-family: "Single Day";
+  color: #72db73;
+  margin-bottom: 30px;
+  font-size: 60px;
+  font-weight: 800;
+}
+h7 {
+  color: white;
+  margin-bottom: 30px;
+  font-size: 18px;
+}
+form label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+form input[type="text"] {
+  /* border: 1px solid #292929; */
+  background-color: #292929;
+  padding: 10px;
+  width: 100%;
+  border-radius: 3px;
+  color: white;
+}
+
+form p {
+  color: red;
+  text-align: left;
+  margin-left: 30px;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.error {
+  border: 2px solid red;
+}
+
+.checkbox input {
+  margin-top: 30px;
+}
+.checkbox span {
+  font-size: 12px;
+  margin-left: 3px;
+  color: #7c7c7c;
+}
+button {
+  background-color: #72db73;
+  padding: 7px;
+  width: 100%;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  font-weight: 600;
+  margin-top: 30px;
+}
+.signup-text p {
+  margin-top: 15px;
+  color: #7c7c7c;
+  font-size: 10px;
+}
+.signup-text span {
+  color: #72db73;
+}
