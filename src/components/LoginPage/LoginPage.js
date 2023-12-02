@@ -25,34 +25,82 @@ function LoginPage() {
     });
   };
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   setFormError(validate(valueInput));
+  //   setIsSubmit(true);
+  //   navigate("/choice");
+  // };
+
+  // useEffect(() => {
+  //   // console.log(formError);
+  //   if (Object.keys(formError).length === 0 && isSubmit) {
+  //     // console.log(valueInput);
+  //     // navigate("/choice");
+  //   }
+  // }, [formError, isSubmit, valueInput, navigate]);
+
+  // const validate = (value) => {
+  //   const error = {};
+  //   const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+  //   const mobileRegex = /^\d{10}$/;
+
+  //   if (!value.name || !value.username || !value.email || !value.mobile) {
+  //     error.name = "Field is required";
+  //   }
+  //   // if (!emailRegex.test(value.email)) {
+  //   //   error.email = "Enter valid email id";
+  //   // }
+  //   // if (!mobileRegex.test(value.mobile)) {
+  //   //   error.mobile = "Enter valid mobile number";
+  //   // }
+  //   if (!value.checkbox) {
+  //     error.checkbox = "Check this box if you want to proceed";
+  //   }
+  //   return error;
+  // };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormError(validate(valueInput));
+    const errors = validate(valueInput);
+    setFormError(errors);
+    if (Object.keys(errors).length === 0) {
+      // Save data to local storage
+      localStorage.setItem("userData", JSON.stringify(valueInput));
+      // Redirect to the next page
+      navigate("/choice");
+    }
     setIsSubmit(true);
   };
 
   useEffect(() => {
-    // console.log(formError);
     if (Object.keys(formError).length === 0 && isSubmit) {
-      // console.log(valueInput);
+      // Redirect to the next page
       navigate("/choice");
     }
-  }, [formError, isSubmit, valueInput, navigate]);
+  }, [formError, isSubmit, navigate]);
 
   const validate = (value) => {
     const error = {};
     const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
     const mobileRegex = /^\d{10}$/;
 
-    if (!value.name || !value.username || !value.email || !value.mobile) {
+    if (!value.name.trim()) {
       error.name = "Field is required";
     }
-    // if (!emailRegex.test(value.email)) {
-    //   error.email = "Enter valid email id";
-    // }
-    // if (!mobileRegex.test(value.mobile)) {
-    //   error.mobile = "Enter valid mobile number";
-    // }
+    if (!value.username.trim()) {
+      error.username = "Field is required";
+    }
+    if (!value.email.trim()) {
+      error.email = "Field is required";
+    } else if (!emailRegex.test(value.email)) {
+      error.email = "Enter a valid email address";
+    }
+    if (!value.mobile.trim()) {
+      error.mobile = "Field is required";
+    } else if (!mobileRegex.test(value.mobile)) {
+      error.mobile = "Enter a valid 10-digit mobile number";
+    }
     if (!value.checkbox) {
       error.checkbox = "Check this box if you want to proceed";
     }
@@ -86,7 +134,7 @@ function LoginPage() {
             <p>{formError.name}</p>
             <label>
               <input
-                className={formError.name ? styles["error"] : ""}
+                className={formError.username ? styles["error"] : ""}
                 placeholder="UserName"
                 type="text"
                 name="username"
@@ -94,10 +142,10 @@ function LoginPage() {
                 onChange={handleChange}
               />
             </label>
-            <p>{formError.name}</p>
+            <p>{formError.username}</p>
             <label>
               <input
-                className={formError.name ? styles["error"] : ""}
+                className={formError.email ? styles["error"] : ""}
                 placeholder="Email"
                 type="text"
                 name="email"
@@ -106,11 +154,11 @@ function LoginPage() {
               />
             </label>
 
-            <p>{formError.name}</p>
+            <p>{formError.email}</p>
 
             <label>
               <input
-                className={formError.name ? styles["error"] : ""}
+                className={formError.mobile ? styles["error"] : ""}
                 placeholder="Mobile"
                 type="text"
                 name="mobile"
@@ -118,7 +166,7 @@ function LoginPage() {
                 onChange={handleChange}
               />
             </label>
-            <p>{formError.name}</p>
+            <p>{formError.mobile}</p>
 
             <div className={styles["checkbox"]}>
               <input

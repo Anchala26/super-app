@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./ChoicePage.module.css";
 import action from "../img/action.png";
 import drama from "../img/drama.png";
@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 
 function ChoicePage() {
   const navigate = useNavigate();
+  const localStorageKey = "selectedCategories";
   const CategoryBox = [
     {
       id: "Action",
@@ -83,8 +84,14 @@ function ChoicePage() {
       background: "#6CD061",
     },
   ];
-  const [selectedOption, setSelectedOption] = useState([]);
+  const [selectedOption, setSelectedOption] = useState(
+    JSON.parse(localStorage.getItem(localStorageKey)) || []
+  );
   const [errorMessage, setErrorMessage] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem(localStorageKey, JSON.stringify(selectedOption));
+  }, [selectedOption]);
 
   const handleClick = (categoryId) => {
     if (!selectedOption.includes(categoryId)) {
