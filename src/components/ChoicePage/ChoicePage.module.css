@@ -1,0 +1,73 @@
+.choicepage {
+  display: flex;
+  flex-direction: row;
+
+  /* border: 2px solid white; */
+  margin: 40px;
+}
+.choicepage div {
+  /* border: 2px solid white; */
+  padding: 20px;
+}
+.choicepage div h3 {
+  color: white;
+  font-size: 50px;
+}
+.categorybox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  /* margin: 40px; */
+}
+.categoryInsideBox {
+  /* border: 2px solid rgb(206, 13, 13); */
+  width: calc(31% - 20px);
+  /* height: 20vh; */
+  margin: 10px;
+  border-radius: 8px;
+  text-align: center;
+  color: white;
+
+  box-sizing: border-box;
+}
+.nextPage {
+  position: absolute;
+  right: 55px;
+  bottom: 30px;
+}
+
+.selectOption {
+  /* border: 2px solid greenyellow; */
+  width: 40px;
+  color: white;
+  background-color: #148a08;
+  border-radius: 10px;
+}
+.selectedBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  /* margin: 10px; */
+}
+.selectedId {
+  color: white;
+  /* border: 2px solid wheat; */
+  background-color: #148a08;
+  width: 25%;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+.selectedId span {
+  background-color: #148a08;
+  cursor: pointer;
+}
+.message {
+  color: red;
+  margin-left: 30px;
+}
+button {
+  padding: 7px 30px;
+}

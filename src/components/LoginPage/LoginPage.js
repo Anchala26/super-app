@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./LoginPage.module.css";
 import imgLoginpg from "../img/imgLoginpg.png";
+import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
   const defaultValue = {
@@ -13,6 +14,7 @@ function LoginPage() {
   const [valueInput, setValueInput] = useState(defaultValue);
   const [formError, setFormError] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -30,11 +32,12 @@ function LoginPage() {
   };
 
   useEffect(() => {
-    console.log(formError);
+    // console.log(formError);
     if (Object.keys(formError).length === 0 && isSubmit) {
-      console.log(valueInput);
+      // console.log(valueInput);
+      navigate("/choice");
     }
-  }, [formError]);
+  }, [formError, isSubmit, valueInput, navigate]);
 
   const validate = (value) => {
     const error = {};
