@@ -1,0 +1,11 @@
+.movie_image {
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.movie_data {
+  width: calc(31% - 20px);
+
+  margin: 20px;
+}

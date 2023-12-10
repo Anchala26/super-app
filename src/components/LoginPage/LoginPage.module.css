@@ -2,11 +2,12 @@
 * {
   padding: 0;
   margin: 0;
-  background-color: #0c190d;
+  /* background-color: #0c190d; */
 }
 .page-body {
   display: flex;
   flex-direction: row;
+  background-color: #0c190d;
 }
 .img-text {
   position: absolute;

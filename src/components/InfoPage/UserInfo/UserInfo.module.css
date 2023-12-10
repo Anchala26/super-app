@@ -1,16 +1,18 @@
-* {
+/* * {
   background-color: #5746ea;
-}
+} */
 .mainBoxDiv {
   background-color: #5746ea;
   display: flex;
   flex-direction: row;
   padding: 30px;
+  margin: 10px;
+  border-radius: 12px;
 }
 .userimg {
   height: 40vh;
   width: 15vh;
-  background-color: #5746ea;
+  /* background-color: #5746ea; */
 }
 .info {
   background-color: #5746ea;
